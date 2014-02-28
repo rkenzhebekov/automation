@@ -1,0 +1,5 @@
+bundle exec rake db:drop db:create
+
+psql database_name -f ~/Documents/database_2013-07-18_00_32
+
+bundle exec rake db:migrate db:permissions:load db:test:prepare
