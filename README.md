@@ -5,3 +5,6 @@ automation
 sudo chown -R :admin /Library/WebServer/Documents
 
 sudo chmod -R g=rw,+X /Library/WebServer/Documents
+
+### Bash completion
+brew install bash-completion
