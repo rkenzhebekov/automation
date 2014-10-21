@@ -2,58 +2,58 @@ tmux has-session -t dev
 if [ $? != 0 ]
 then
   tmux new -s dev -n ams -d
-  tmux send-keys -t dev 'cd ~/Documents/pinc/ams' C-m
+  tmux send-keys -t dev 'cd ~/pinc/ams' C-m
   tmux split-window -v -t dev
   tmux select-layout -t dev main-horizontal
-  tmux send-keys -t dev:1.2 'cd ~/Documents/pinc/ams' C-m
+  tmux send-keys -t dev:1.2 'cd ~/pinc/ams' C-m
   
   tmux new-window -n cas -t dev
-  tmux send-keys -t dev:2 'cd ~/Documents/pinc/rubycas-server' C-m
+  tmux send-keys -t dev:2 'cd ~/pinc/cas' C-m
   tmux split-window -v -t dev:2
   tmux select-layout -t dev:2 main-horizontal
-  tmux send-keys -t dev:2.2 'cd ~/Documents/pinc/rubycas-server' C-m
+  tmux send-keys -t dev:2.2 'cd ~/pinc/cas' C-m
  
   tmux new-window -n yh -t dev
-  tmux send-keys -t dev:3 'cd ~/Documents/pinc/yardhound' C-m
+  tmux send-keys -t dev:3 'cd ~/pinc/yh' C-m
   tmux split-window -v -t dev:3
   tmux select-layout -t dev:3 main-horizontal
-  tmux send-keys -t dev:3.2 'cd ~/Documents/pinc/yardhound' C-m
+  tmux send-keys -t dev:3.2 'cd ~/pinc/yh' C-m
   
   tmux new-window -n ss -t dev
-  tmux send-keys -t dev:4 'cd ~/Documents/pinc/shipments' C-m
+  tmux send-keys -t dev:4 'cd ~/pinc/ss' C-m
   tmux split-window -v -t dev:4
   tmux select-layout -t dev:4 main-horizontal
-  tmux send-keys -t dev:4.2 'cd ~/Documents/pinc/shipments' C-m
+  tmux send-keys -t dev:4.2 'cd ~/pinc/ss' C-m
   
   tmux new-window -n cp -t dev
-  tmux send-keys -t dev:5 'cd ~/Documents/pinc/corporate_portal' C-m
+  tmux send-keys -t dev:5 'cd ~/pinc/cp' C-m
   tmux split-window -v -t dev:5
   tmux select-layout -t dev:5 main-horizontal
-  tmux send-keys -t dev:5.2 'cd ~/Documents/pinc/corporate_portal' C-m
+  tmux send-keys -t dev:5.2 'cd ~/pinc/cp' C-m
 
   tmux new-window -n sas -t dev
-  tmux send-keys -t dev:6 'cd ~/Documents/pinc/shipment_analysis_server' C-m
+  tmux send-keys -t dev:6 'cd ~/pinc/sas' C-m
   tmux split-window -v -t dev:6
   tmux select-layout -t dev:6 main-horizontal
-  tmux send-keys -t dev:6.2 'cd ~/Documents/pinc/shipment_analysis_server' C-m
+  tmux send-keys -t dev:6.2 'cd ~/pinc/sas' C-m
 
   tmux new-window -n tvs -t dev
-  tmux send-keys -t dev:7 'cd ~/Documents/pinc/trailer_visit_server' C-m
+  tmux send-keys -t dev:7 'cd ~/pinc/tvs' C-m
   tmux split-window -v -t dev:7
   tmux select-layout -t dev:7 main-horizontal
-  tmux send-keys -t dev:7.2 'cd ~/Documents/pinc/trailer_visit_server' C-m
+  tmux send-keys -t dev:7.2 'cd ~/pinc/tvs' C-m
   
   tmux new-window -n nst -t dev
-  tmux send-keys -t dev:8 'cd ~/Documents/pinc/nst' C-m
+  tmux send-keys -t dev:8 'cd ~/pinc/nst' C-m
   tmux split-window -v -t dev:8
   tmux select-layout -t dev:8 main-horizontal
-  tmux send-keys -t dev:8.2 'cd ~/Documents/pinc/nst' C-m
+  tmux send-keys -t dev:8.2 'cd ~/pinc/nst' C-m
   
   tmux new-window -n shell -t dev
-  tmux send-keys -t dev:9 'cd ~/Documents/pinc/' C-m
+  tmux send-keys -t dev:9 'cd ~/pinc/' C-m
   tmux split-window -v -t dev:9
   tmux select-layout -t dev:9 main-horizontal
-  tmux send-keys -t dev:9.2 'cd ~/Documents/pinc/' C-m
+  tmux send-keys -t dev:9.2 'cd ~/pinc/' C-m
   tmux select-window -t dev:9
   tmux attach -t dev
 fi
