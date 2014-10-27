@@ -6,6 +6,10 @@ sudo chown -R :admin /Library/WebServer/Documents
 
 sudo chmod -R g=rw,+X /Library/WebServer/Documents
 
+Add the following to httpd.conf if localhost/gems is not accessible:
+
+Options Indexes FollowSymLinks
+
 ### Bash completion
 brew install bash-completion
 
