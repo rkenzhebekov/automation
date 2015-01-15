@@ -1,0 +1,13 @@
+[user]
+	name = First Last
+	email = spam@spam.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	d = diff
+	a = add
+	last = log -1 HEAD
+	c = commit
