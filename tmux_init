@@ -55,7 +55,6 @@ then
   tmux select-layout -t dev:9 main-horizontal
   tmux send-keys -t dev:9.2 'cd ~/pinc/' C-m
   tmux select-window -t dev:9
-  tmux attach -t dev
 fi
 
 tmux has-session -t work
@@ -75,4 +74,3 @@ then
   tmux select-window -t work:2
 fi
 
-tmux ls
