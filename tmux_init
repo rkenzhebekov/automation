@@ -66,11 +66,30 @@ then
   tmux select-layout -t work main-horizontal
   tmux send-keys -t work:1.2 'cd ~/Documents/consulting' C-m
 
-  tmux new-window -n shell -t work
-  tmux send-keys -t work:2 'cd ~/Documents/' C-m
+  tmux new-window -n erl -t work
+  tmux send-keys -t work:2 'cd ~/Documents/erlang' C-m
   tmux split-window -v -t work:2
   tmux select-layout -t work:2 main-horizontal
-  tmux send-keys -t work:2.2 'cd ~/Documents/' C-m
+  tmux send-keys -t work:2.2 'cd ~/Documents/erlang' C-m
+  
+  tmux new-window -n nerves -t work
+  tmux send-keys -t work:3 'cd ~/Documents/nerves' C-m
+  tmux split-window -v -t work:3
+  tmux select-layout -t work:3 main-horizontal
+  tmux send-keys -t work:3.2 'cd ~/Documents/nerves' C-m
+
+  tmux new-window -n phoenix -t work
+  tmux send-keys -t work:4 'cd ~/Documents/programming_phoenix' C-m
+  tmux split-window -v -t work:4
+  tmux select-layout -t work:4 main-horizontal
+  tmux send-keys -t work:4.2 'cd ~/Documents/programming_phoenix' C-m
+
+  tmux new-window -n ruby-perf -t work
+  tmux send-keys -t work:5 'cd ~/Documents/ruby-perf' C-m
+  tmux split-window -v -t work:5
+  tmux select-layout -t work:5 main-horizontal
+  tmux send-keys -t work:5.2 'cd ~/Documents/ruby-perf' C-m
+
   tmux select-window -t work:2
 fi
 
