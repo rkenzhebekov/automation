@@ -1,95 +1,101 @@
-tmux has-session -t dev
+tmux has-session -t pinc
 if [ $? != 0 ]
 then
-  tmux new -s dev -n ams -d
-  tmux send-keys -t dev 'cd ~/pinc/ams' C-m
-  tmux split-window -v -t dev
-  tmux select-layout -t dev main-horizontal
-  tmux send-keys -t dev:1.2 'cd ~/pinc/ams' C-m
+  tmux new -s pinc -n ams -d
+  tmux send-keys -t pinc 'cd ~/pinc/ams' C-m
+  tmux split-window -v -t pinc
+  tmux select-layout -t pinc main-horizontal
+  tmux send-keys -t pinc:1.2 'cd ~/pinc/ams' C-m
   
-  tmux new-window -n cas -t dev
-  tmux send-keys -t dev:2 'cd ~/pinc/cas' C-m
-  tmux split-window -v -t dev:2
-  tmux select-layout -t dev:2 main-horizontal
-  tmux send-keys -t dev:2.2 'cd ~/pinc/cas' C-m
+  tmux new-window -n cas -t pinc
+  tmux send-keys -t pinc:2 'cd ~/pinc/cas' C-m
+  tmux split-window -v -t pinc:2
+  tmux select-layout -t pinc:2 main-horizontal
+  tmux send-keys -t pinc:2.2 'cd ~/pinc/cas' C-m
  
-  tmux new-window -n yh -t dev
-  tmux send-keys -t dev:3 'cd ~/pinc/yh' C-m
-  tmux split-window -v -t dev:3
-  tmux select-layout -t dev:3 main-horizontal
-  tmux send-keys -t dev:3.2 'cd ~/pinc/yh' C-m
+  tmux new-window -n yh -t pinc
+  tmux send-keys -t pinc:3 'cd ~/pinc/yh' C-m
+  tmux split-window -v -t pinc:3
+  tmux select-layout -t pinc:3 main-horizontal
+  tmux send-keys -t pinc:3.2 'cd ~/pinc/yh' C-m
   
-  tmux new-window -n ss -t dev
-  tmux send-keys -t dev:4 'cd ~/pinc/ss' C-m
-  tmux split-window -v -t dev:4
-  tmux select-layout -t dev:4 main-horizontal
-  tmux send-keys -t dev:4.2 'cd ~/pinc/ss' C-m
+  tmux new-window -n ss -t pinc
+  tmux send-keys -t pinc:4 'cd ~/pinc/ss' C-m
+  tmux split-window -v -t pinc:4
+  tmux select-layout -t pinc:4 main-horizontal
+  tmux send-keys -t pinc:4.2 'cd ~/pinc/ss' C-m
   
-  tmux new-window -n cp -t dev
-  tmux send-keys -t dev:5 'cd ~/pinc/cp' C-m
-  tmux split-window -v -t dev:5
-  tmux select-layout -t dev:5 main-horizontal
-  tmux send-keys -t dev:5.2 'cd ~/pinc/cp' C-m
+  tmux new-window -n cp -t pinc
+  tmux send-keys -t pinc:5 'cd ~/pinc/cp' C-m
+  tmux split-window -v -t pinc:5
+  tmux select-layout -t pinc:5 main-horizontal
+  tmux send-keys -t pinc:5.2 'cd ~/pinc/cp' C-m
 
-  tmux new-window -n sas -t dev
-  tmux send-keys -t dev:6 'cd ~/pinc/sas' C-m
-  tmux split-window -v -t dev:6
-  tmux select-layout -t dev:6 main-horizontal
-  tmux send-keys -t dev:6.2 'cd ~/pinc/sas' C-m
+  tmux new-window -n sas -t pinc
+  tmux send-keys -t pinc:6 'cd ~/pinc/sas' C-m
+  tmux split-window -v -t pinc:6
+  tmux select-layout -t pinc:6 main-horizontal
+  tmux send-keys -t pinc:6.2 'cd ~/pinc/sas' C-m
 
-  tmux new-window -n tvs -t dev
-  tmux send-keys -t dev:7 'cd ~/pinc/tvs' C-m
-  tmux split-window -v -t dev:7
-  tmux select-layout -t dev:7 main-horizontal
-  tmux send-keys -t dev:7.2 'cd ~/pinc/tvs' C-m
+  tmux new-window -n tvs -t pinc
+  tmux send-keys -t pinc:7 'cd ~/pinc/tvs' C-m
+  tmux split-window -v -t pinc:7
+  tmux select-layout -t pinc:7 main-horizontal
+  tmux send-keys -t pinc:7.2 'cd ~/pinc/tvs' C-m
   
-  tmux new-window -n nst -t dev
-  tmux send-keys -t dev:8 'cd ~/pinc/nst' C-m
-  tmux split-window -v -t dev:8
-  tmux select-layout -t dev:8 main-horizontal
-  tmux send-keys -t dev:8.2 'cd ~/pinc/nst' C-m
+  tmux new-window -n nst -t pinc
+  tmux send-keys -t pinc:8 'cd ~/pinc/nst' C-m
+  tmux split-window -v -t pinc:8
+  tmux select-layout -t pinc:8 main-horizontal
+  tmux send-keys -t pinc:8.2 'cd ~/pinc/nst' C-m
   
-  tmux new-window -n shell -t dev
-  tmux send-keys -t dev:9 'cd ~/pinc/' C-m
-  tmux split-window -v -t dev:9
-  tmux select-layout -t dev:9 main-horizontal
-  tmux send-keys -t dev:9.2 'cd ~/pinc/' C-m
-  tmux select-window -t dev:9
+  tmux new-window -n shell -t pinc
+  tmux send-keys -t pinc:9 'cd ~/pinc/' C-m
+  tmux split-window -v -t pinc:9
+  tmux select-layout -t pinc:9 main-horizontal
+  tmux send-keys -t pinc:9.2 'cd ~/pinc/' C-m
+  tmux select-window -t pinc:9
 fi
 
-tmux has-session -t work
+tmux has-session -t fun
 if [ $? != 0 ]
 then
-  tmux new -s work -n consulting -d
-  tmux send-keys -t work 'cd ~/Documents/consulting' C-m
-  tmux split-window -v -t work
-  tmux select-layout -t work main-horizontal
-  tmux send-keys -t work:1.2 'cd ~/Documents/consulting' C-m
+  tmux new -s fun -n consult -d
+  tmux send-keys -t fun 'cd ~/Documents/consulting' C-m
+  tmux split-window -v -t fun
+  tmux select-layout -t fun main-horizontal
+  tmux send-keys -t fun:1.2 'cd ~/Documents/consulting' C-m
 
-  tmux new-window -n erl -t work
-  tmux send-keys -t work:2 'cd ~/Documents/erlang' C-m
-  tmux split-window -v -t work:2
-  tmux select-layout -t work:2 main-horizontal
-  tmux send-keys -t work:2.2 'cd ~/Documents/erlang' C-m
+  tmux new-window -n erl -t fun
+  tmux send-keys -t fun:2 'cd ~/Documents/erlang' C-m
+  tmux split-window -v -t fun:2
+  tmux select-layout -t fun:2 main-horizontal
+  tmux send-keys -t fun:2.2 'cd ~/Documents/erlang' C-m
   
-  tmux new-window -n nerves -t work
-  tmux send-keys -t work:3 'cd ~/Documents/nerves' C-m
-  tmux split-window -v -t work:3
-  tmux select-layout -t work:3 main-horizontal
-  tmux send-keys -t work:3.2 'cd ~/Documents/nerves' C-m
+  tmux new-window -n nerves -t fun
+  tmux send-keys -t fun:3 'cd ~/Documents/nerves' C-m
+  tmux split-window -v -t fun:3
+  tmux select-layout -t fun:3 main-horizontal
+  tmux send-keys -t fun:3.2 'cd ~/Documents/nerves' C-m
 
-  tmux new-window -n phoenix -t work
-  tmux send-keys -t work:4 'cd ~/Documents/programming_phoenix' C-m
-  tmux split-window -v -t work:4
-  tmux select-layout -t work:4 main-horizontal
-  tmux send-keys -t work:4.2 'cd ~/Documents/programming_phoenix' C-m
+  tmux new-window -n phoenix -t fun
+  tmux send-keys -t fun:4 'cd ~/Documents/programming_phoenix' C-m
+  tmux split-window -v -t fun:4
+  tmux select-layout -t fun:4 main-horizontal
+  tmux send-keys -t fun:4.2 'cd ~/Documents/programming_phoenix' C-m
 
-  tmux new-window -n ruby-perf -t work
-  tmux send-keys -t work:5 'cd ~/Documents/ruby-perf' C-m
-  tmux split-window -v -t work:5
-  tmux select-layout -t work:5 main-horizontal
-  tmux send-keys -t work:5.2 'cd ~/Documents/ruby-perf' C-m
+  tmux new-window -n ruby-perf -t fun
+  tmux send-keys -t fun:5 'cd ~/Documents/ruby-perf' C-m
+  tmux split-window -v -t fun:5
+  tmux select-layout -t fun:5 main-horizontal
+  tmux send-keys -t fun:5.2 'cd ~/Documents/ruby-perf' C-m
 
-  tmux select-window -t work:2
+  tmux new-window -n shell -t fun
+  tmux send-keys -t fun:6 'cd ~/Documents' C-m
+  tmux split-window -v -t fun:6
+  tmux select-layout -t fun:6 main-horizontal
+  tmux send-keys -t fun:6.2 'cd ~/Documents' C-m
+
+  tmux select-window -t fun:2
 fi
 
