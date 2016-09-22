@@ -90,11 +90,17 @@ then
   tmux select-layout -t fun:5 main-horizontal
   tmux send-keys -t fun:5.2 'cd ~/Documents/ruby-perf' C-m
 
-  tmux new-window -n shell -t fun
-  tmux send-keys -t fun:6 'cd ~/Documents' C-m
+  tmux new-window -n elixir -t fun
+  tmux send-keys -t fun:6 'cd ~/Documents/elixir' C-m
   tmux split-window -v -t fun:6
   tmux select-layout -t fun:6 main-horizontal
-  tmux send-keys -t fun:6.2 'cd ~/Documents' C-m
+  tmux send-keys -t fun:6.2 'cd ~/Documents/elixir' C-m
+
+  tmux new-window -n shell -t fun
+  tmux send-keys -t fun:7 'cd ~/Documents' C-m
+  tmux split-window -v -t fun:7
+  tmux select-layout -t fun:7 main-horizontal
+  tmux send-keys -t fun:7.2 'cd ~/Documents' C-m
 
   tmux select-window -t fun:2
 fi
