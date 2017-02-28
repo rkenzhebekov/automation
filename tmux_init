@@ -96,11 +96,17 @@ then
   tmux select-layout -t fun:6 main-horizontal
   tmux send-keys -t fun:6.2 'cd ~/Documents/elixir' C-m
 
-  tmux new-window -n shell -t fun
-  tmux send-keys -t fun:7 'cd ~/Documents' C-m
+  tmux new-window -n elm -t fun
+  tmux send-keys -t fun:7 'cd ~/Documents/elm' C-m
   tmux split-window -v -t fun:7
   tmux select-layout -t fun:7 main-horizontal
-  tmux send-keys -t fun:7.2 'cd ~/Documents' C-m
+  tmux send-keys -t fun:7.2 'cd ~/Documents/elm' C-m
+
+  tmux new-window -n shell -t fun
+  tmux send-keys -t fun:8 'cd ~/Documents' C-m
+  tmux split-window -v -t fun:8
+  tmux select-layout -t fun:8 main-horizontal
+  tmux send-keys -t fun:8.2 'cd ~/Documents' C-m
 
   tmux select-window -t fun:2
 fi
