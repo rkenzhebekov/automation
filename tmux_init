@@ -1,4 +1,5 @@
-tmux has-session -t pinc
+tmux new -s test
+tmux has-session -t pinc 2>/dev/null
 if [ $? != 0 ]
 then
   tmux new -s pinc -n ams -d
@@ -57,7 +58,7 @@ then
   tmux select-window -t pinc:9
 fi
 
-tmux has-session -t fun
+tmux has-session -t fun 2>/dev/null
 if [ $? != 0 ]
 then
   tmux new -s fun -n consult -d
@@ -108,6 +109,13 @@ then
   tmux select-layout -t fun:8 main-horizontal
   tmux send-keys -t fun:8.2 'cd ~/Documents' C-m
 
+  tmux new-window -n vim -t fun
+  tmux send-keys -t fun:9 'cd ~/Documents/vim_book' C-m
+  tmux split-window -v -t fun:9
+  tmux select-layout -t fun:9 main-horizontal
+  tmux send-keys -t fun:9.2 'cd ~/Documents/vim_book' C-m
+
   tmux select-window -t fun:2
 fi
+
 
