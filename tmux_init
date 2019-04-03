@@ -7,25 +7,25 @@ then
   tmux split-window -v -t pinc
   tmux select-layout -t pinc main-horizontal
   tmux send-keys -t pinc:1.2 'cd ~/pinc/ams' C-m
-  
-  tmux new-window -n cas -t pinc
-  tmux send-keys -t pinc:2 'cd ~/pinc/cas' C-m
+
+  tmux new-window -n pinc-dev-env -t pinc
+  tmux send-keys -t pinc:2 'cd ~/pinc/pinc-dev-env' C-m
   tmux split-window -v -t pinc:2
   tmux select-layout -t pinc:2 main-horizontal
-  tmux send-keys -t pinc:2.2 'cd ~/pinc/cas' C-m
- 
-  tmux new-window -n yh -t pinc
-  tmux send-keys -t pinc:3 'cd ~/pinc/yh' C-m
+  tmux send-keys -t pinc:2.2 'cd ~/pinc/pinc-dev-env' C-m
+
+  tmux new-window -n yms -t pinc
+  tmux send-keys -t pinc:3 'cd ~/pinc/yms' C-m
   tmux split-window -v -t pinc:3
   tmux select-layout -t pinc:3 main-horizontal
-  tmux send-keys -t pinc:3.2 'cd ~/pinc/yh' C-m
-  
+  tmux send-keys -t pinc:3.2 'cd ~/pinc/yms' C-m
+
   tmux new-window -n ss -t pinc
   tmux send-keys -t pinc:4 'cd ~/pinc/ss' C-m
   tmux split-window -v -t pinc:4
   tmux select-layout -t pinc:4 main-horizontal
   tmux send-keys -t pinc:4.2 'cd ~/pinc/ss' C-m
-  
+
   tmux new-window -n cp -t pinc
   tmux send-keys -t pinc:5 'cd ~/pinc/cp' C-m
   tmux split-window -v -t pinc:5
