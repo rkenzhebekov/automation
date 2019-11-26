@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+if ARGV[0] == '--help'
+  puts "Usage: stack_ssh nice-app-5x"
+  exit
+end
+
+def ssh_to(ip_address, user)
+  if ip_address.nil? || ip_address == ''
+    puts "Invalid IP address specified"
+  elsif user.nil? || user == ''
+    puts "Invalid user specified"
+  end
+  ssh_cmd =  "ssh -tt -l #{user} #{ip_address}"
+  puts ssh_cmd
+  system(ssh_cmd)
+end
+
+stack_name = ARGV[0]
+
+stacks_output = `aws opsworks describe-stacks --query "Stacks[?contains(Name,'#{stack_name}')][Name,StackId]" --output text`
+
+stacks = stacks_output.split("\n")
+if stacks.size == 0
+  puts "No stack found matching '#{stack_name}'"
+  exit
+elsif stacks.size == 1
+  selected_stack, stack_id = stacks.first.split.("\t").map{|str| str.delete("\n")}
+else
+  h = {}
+  stacks.each do |stack_info|
+    stack_name, stack_id = stack_info.split("\t")
+    h[stack_name] = stack_id
+  end
+
+  puts "Select stack:"
+  h.keys.each_with_index do |stack_name, index|
+    puts "[#{index}]: #{stack_name}"
+  end
+
+  selected_stack = h.keys[STDIN.gets.chomp.to_i]
+  if selected_stack.nil? || selected_stack == ''
+    puts "Invalid stack # selection"
+    exit
+  end
+
+  stack_id = h[selected_stack]
+end
+
+
+instance_output = `aws opsworks describe-instances --stack-id #{stack_id} --query "Instances[?Hostname].[PublicIp]" --output text`
+
+instances = instance_output.split("\n")
+
+user = `whoami`.delete("\n")
+if instances.size == 0
+  puts "No instance found for selected stack #{selected_stack}"
+elsif instances.size == 1
+  ip_address = instances.first.delete("\n")
+  ssh_to(ip_address, user)
+else
+  puts "Select IP Address:"
+  instances.each_with_index do |ip_address, index|
+    puts "[#{index}]: #{ip_address}"
+  end
+  ip_address = instances[STDIN.gets.chomp.to_i]
+  ssh_to(ip_address, user)
+end
+

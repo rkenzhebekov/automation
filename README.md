@@ -19,3 +19,17 @@ brew install bash-completion
 
 createuser pinc -s -r -d
 createuser postgres -s -r -d
+
+### SSH to AWS stack intances
+If you tired logging to AWS Console to get EC2 instance ip address use the
+following script which doesn't require you providing IP address.
+
+Add the following to your ~/.vimrc: 
+  alias mssh='~/automation/stack_ssh'
+
+Requirements: 
+  - ruby
+  - awscli v1.16.290
+  - setup AWS keys
+
+Usage example: mssh nice-stack-name
