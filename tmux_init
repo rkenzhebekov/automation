@@ -1,121 +1,151 @@
-#tmux new -s test
-tmux has-session -t pinc 2>/dev/null
+#!/bin/bash -e
+
+echo "Checking for existing sessions"
+
+session=pinc
+tmux has-session -t $session 2>/dev/null
+
 if [ $? != 0 ]
 then
-  tmux new -s pinc -n ams -d
-  tmux send-keys -t pinc 'cd ~/pinc/ams' C-m
-  tmux split-window -v -t pinc
-  tmux select-layout -t pinc main-horizontal
-  tmux send-keys -t pinc:1.2 'cd ~/pinc/ams' C-m
+  echo "Creating $session session"
+  tmux new -s $session -n ams -d
+  tmux send-keys -t $session 'cd ~/pinc/ams' C-m
+  tmux split-window -v -t $session
+  tmux select-layout -t $session main-horizontal
+  tmux send-keys -t $session:1.2 'cd ~/pinc/ams' C-m
 
-  tmux new-window -n box -t pinc
-  tmux send-keys -t pinc:2 'cd ~/pinc/pinc-dev-env' C-m
-  tmux split-window -v -t pinc:2
-  tmux select-layout -t pinc:2 main-horizontal
-  tmux send-keys -t pinc:2.2 'cd ~/pinc/pinc-dev-env' C-m
+  tmux new-window -n cas -t $session
+  tmux send-keys -t $session:2 'cd ~/pinc/cas' C-m
+  tmux split-window -v -t $session:2
+  tmux select-layout -t $session:2 main-horizontal
+  tmux send-keys -t $session:2.2 'cd ~/pinc/cas' C-m
 
-  tmux new-window -n yms -t pinc
-  tmux send-keys -t pinc:3 'cd ~/pinc/yms' C-m
-  tmux split-window -v -t pinc:3
-  tmux select-layout -t pinc:3 main-horizontal
-  tmux send-keys -t pinc:3.2 'cd ~/pinc/yms' C-m
+  tmux new-window -n yms -t $session
+  tmux send-keys -t $session:3 'cd ~/pinc/yms' C-m
+  tmux split-window -v -t $session:3
+  tmux select-layout -t $session:3 main-horizontal
+  tmux send-keys -t $session:3.2 'cd ~/pinc/yms' C-m
 
-  tmux new-window -n ss -t pinc
-  tmux send-keys -t pinc:4 'cd ~/pinc/ss' C-m
-  tmux split-window -v -t pinc:4
-  tmux select-layout -t pinc:4 main-horizontal
-  tmux send-keys -t pinc:4.2 'cd ~/pinc/ss' C-m
+  tmux new-window -n ss -t $session
+  tmux send-keys -t $session:4 'cd ~/pinc/ss' C-m
+  tmux split-window -v -t $session:4
+  tmux select-layout -t $session:4 main-horizontal
+  tmux send-keys -t $session:4.2 'cd ~/pinc/ss' C-m
 
-  tmux new-window -n cp -t pinc
-  tmux send-keys -t pinc:5 'cd ~/pinc/cp' C-m
-  tmux split-window -v -t pinc:5
-  tmux select-layout -t pinc:5 main-horizontal
-  tmux send-keys -t pinc:5.2 'cd ~/pinc/cp' C-m
+  tmux new-window -n evs -t $session
+  tmux send-keys -t $session:5 'cd ~/pinc/evs' C-m
+  tmux split-window -v -t $session:5
+  tmux select-layout -t $session:5 main-horizontal
+  tmux send-keys -t $session:5.2 'cd ~/pinc/evs' C-m
 
-  tmux new-window -n sas -t pinc
-  tmux send-keys -t pinc:6 'cd ~/pinc/sas' C-m
-  tmux split-window -v -t pinc:6
-  tmux select-layout -t pinc:6 main-horizontal
-  tmux send-keys -t pinc:6.2 'cd ~/pinc/sas' C-m
+  tmux new-window -n sas -t $session
+  tmux send-keys -t $session:6 'cd ~/pinc/sas' C-m
+  tmux split-window -v -t $session:6
+  tmux select-layout -t $session:6 main-horizontal
+  tmux send-keys -t $session:6.2 'cd ~/pinc/sas' C-m
 
-  tmux new-window -n tvs -t pinc
-  tmux send-keys -t pinc:7 'cd ~/pinc/tvs' C-m
-  tmux split-window -v -t pinc:7
-  tmux select-layout -t pinc:7 main-horizontal
-  tmux send-keys -t pinc:7.2 'cd ~/pinc/tvs' C-m
+  tmux new-window -n tvs -t $session
+  tmux send-keys -t $session:7 'cd ~/pinc/tvs' C-m
+  tmux split-window -v -t $session:7
+  tmux select-layout -t $session:7 main-horizontal
+  tmux send-keys -t $session:7.2 'cd ~/pinc/tvs' C-m
   
-  tmux new-window -n nst -t pinc
-  tmux send-keys -t pinc:8 'cd ~/pinc/nst' C-m
-  tmux split-window -v -t pinc:8
-  tmux select-layout -t pinc:8 main-horizontal
-  tmux send-keys -t pinc:8.2 'cd ~/pinc/nst' C-m
+  tmux new-window -n yms2 -t $session
+  tmux send-keys -t $session:8 'cd ~/pinc/yms2' C-m
+  tmux split-window -v -t $session:8
+  tmux select-layout -t $session:8 main-horizontal
+  tmux send-keys -t $session:8.2 'cd ~/pinc/yms2' C-m
   
-  tmux new-window -n shell -t pinc
-  tmux send-keys -t pinc:9 'cd ~/pinc/' C-m
-  tmux split-window -v -t pinc:9
-  tmux select-layout -t pinc:9 main-horizontal
-  tmux send-keys -t pinc:9.2 'cd ~/pinc/' C-m
-  tmux select-window -t pinc:9
+  tmux new-window -n ⚡️ -t $session
+  tmux send-keys -t $session:9 'cd ~/pinc/' C-m
+  tmux split-window -v -t $session:9
+  tmux select-layout -t $session:9 main-horizontal
+  tmux send-keys -t $session:9.2 'cd ~/pinc/' C-m
+
+  tmux select-window -t $session:3
+else
+  echo "Session $session already exist"
 fi
 
-tmux has-session -t fun 2>/dev/null
+session=proj
+tmux has-session -t $session 2>/dev/null
+
 if [ $? != 0 ]
 then
-  tmux new -s fun -n consult -d
-  tmux send-keys -t fun 'cd ~/Documents/consulting' C-m
-  tmux split-window -v -t fun
-  tmux select-layout -t fun main-horizontal
-  tmux send-keys -t fun:1.2 'cd ~/Documents/consulting' C-m
+  echo "Creating $session session"
+  tmux new -s $session -n elixir -d
+  tmux send-keys -t $session 'cd ~/Documents/elixir' C-m
+  tmux split-window -v -t $session
+  tmux select-layout -t $session main-horizontal
+  tmux send-keys -t $session:1.2 'cd ~/Documents/elixir' C-m
 
-  tmux new-window -n erl -t fun
-  tmux send-keys -t fun:2 'cd ~/Documents/erlang' C-m
-  tmux split-window -v -t fun:2
-  tmux select-layout -t fun:2 main-horizontal
-  tmux send-keys -t fun:2.2 'cd ~/Documents/erlang' C-m
+  tmux new-window -n nerves -t $session
+  tmux send-keys -t $session:2 'cd ~/Documents/nerves' C-m
+  tmux split-window -v -t $session:2
+  tmux select-layout -t $session:2 main-horizontal
+  tmux send-keys -t $session:2.2 'cd ~/Documents/nerves' C-m
   
-  tmux new-window -n nerves -t fun
-  tmux send-keys -t fun:3 'cd ~/Documents/nerves' C-m
-  tmux split-window -v -t fun:3
-  tmux select-layout -t fun:3 main-horizontal
-  tmux send-keys -t fun:3.2 'cd ~/Documents/nerves' C-m
+  tmux new-window -n yammy -t $session
+  tmux send-keys -t $session:3 'cd ~/Documents/elixir/yammytodo' C-m
+  tmux split-window -v -t $session:3
+  tmux select-layout -t $session:3 main-horizontal
+  tmux send-keys -t $session:3.2 'cd ~/Documents/elixir/yammytodo' C-m
 
-  tmux new-window -n phoenix -t fun
-  tmux send-keys -t fun:4 'cd ~/Documents/programming_phoenix' C-m
-  tmux split-window -v -t fun:4
-  tmux select-layout -t fun:4 main-horizontal
-  tmux send-keys -t fun:4.2 'cd ~/Documents/programming_phoenix' C-m
+  tmux new-window -n experiment -t $session
+  tmux send-keys -t $session:4 'cd ~/Documents/nerves/experiment' C-m
+  tmux split-window -v -t $session:4
+  tmux select-layout -t $session:4 main-horizontal
+  tmux send-keys -t $session:4.2 'cd ~/Documents/nerves/experiment' C-m
 
-  tmux new-window -n ruby-perf -t fun
-  tmux send-keys -t fun:5 'cd ~/Documents/ruby-perf' C-m
-  tmux split-window -v -t fun:5
-  tmux select-layout -t fun:5 main-horizontal
-  tmux send-keys -t fun:5.2 'cd ~/Documents/ruby-perf' C-m
+  tmux new-window -n ⚡️ -t $session
+  tmux send-keys -t $session:5 'cd ~/Documents/' C-m
+  tmux split-window -v -t $session:5
+  tmux select-layout -t $session:5 main-horizontal
+  tmux send-keys -t $session:5.2 'cd ~/Documents/' C-m
 
-  tmux new-window -n elixir -t fun
-  tmux send-keys -t fun:6 'cd ~/Documents/elixir' C-m
-  tmux split-window -v -t fun:6
-  tmux select-layout -t fun:6 main-horizontal
-  tmux send-keys -t fun:6.2 'cd ~/Documents/elixir' C-m
-
-  tmux new-window -n elm -t fun
-  tmux send-keys -t fun:7 'cd ~/Documents/elm' C-m
-  tmux split-window -v -t fun:7
-  tmux select-layout -t fun:7 main-horizontal
-  tmux send-keys -t fun:7.2 'cd ~/Documents/elm' C-m
-
-  tmux new-window -n shell -t fun
-  tmux send-keys -t fun:8 'cd ~/Documents' C-m
-  tmux split-window -v -t fun:8
-  tmux select-layout -t fun:8 main-horizontal
-  tmux send-keys -t fun:8.2 'cd ~/Documents' C-m
-
-  tmux new-window -n vim -t fun
-  tmux send-keys -t fun:9 'cd ~/Documents/vim_book' C-m
-  tmux split-window -v -t fun:9
-  tmux select-layout -t fun:9 main-horizontal
-  tmux send-keys -t fun:9.2 'cd ~/Documents/vim_book' C-m
-
-  tmux select-window -t fun:2
+  tmux select-window -t $session:3
+else
+  echo "Session $session already exist"
 fi
 
+session=learn
+tmux has-session -t $session 2>/dev/null
+
+if [ $? != 0 ]
+then
+  echo "Creating $session session"
+  tmux new -s $session -n rt-phx -d
+  tmux send-keys -t $session:1 'cd ~/Documents/elixir/real-time-phoenix/hello_sockets' C-m
+  tmux split-window -v -t $session
+  tmux select-layout -t $session main-horizontal
+  tmux send-keys -t $session:1.2 'cd ~/Documents/elixir/real-time-phoenix/hello_sockets' C-m
+
+  tmux new-window -n pbt -t $session
+  tmux send-keys -t $session:2 'cd ~/Documents/pbt' C-m
+  tmux split-window -v -t $session:2
+  tmux select-layout -t $session:2 main-horizontal
+  tmux send-keys -t $session:2.2 'cd ~/Documents/pbt' C-m
+
+  tmux new-window -n elm -t $session
+  tmux send-keys -t $session:3 'cd ~/Documents/pragstudio-elm-code' C-m
+  tmux split-window -v -t $session:3
+  tmux select-layout -t $session:3 main-horizontal
+  tmux send-keys -t $session:3.2 'cd ~/Documents/pragstudio-elm-code' C-m
+
+  tmux new-window -n vim_book -t $session
+  tmux send-keys -t $session:4 'cd ~/Documents/vim_book' C-m
+  tmux split-window -v -t $session:4
+  tmux select-layout -t $session:4 main-horizontal
+  tmux send-keys -t $session:4.2 'cd ~/Documents/vim_book' C-m
+
+  tmux new-window -n ⚡️ -t $session
+  tmux send-keys -t $session:5 'cd ~/Documents/' C-m
+  tmux split-window -v -t $session:5
+  tmux select-layout -t $session:5 main-horizontal
+  tmux send-keys -t $session:5.2 'cd ~/Documents/' C-m
+
+  tmux select-window -t $session:1
+else
+  echo "Session $session already exist"
+fi
 
